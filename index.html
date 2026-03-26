@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ProjuktiBari Tools</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Digital Marketing Tools</h1>
+
+<h3>Facebook Caption Generator</h3>
+<textarea id="caption"></textarea><br>
+<button onclick="generateCaption()">Generate</button>
+
+<script>
+function generateCaption() {
+  const captions = [
+    "Boost your business today 🚀",
+    "Best deal available now!",
+    "Limited time offer ⏳",
+    "Grow your brand with us 💼"
+  ];
+  document.getElementById("caption").value =
+    captions[Math.floor(Math.random() * captions.length)];
+}
+</script>
+
+</body>
+</html>
