@@ -2,53 +2,76 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ProjuktiBari Tools</title>
 
 <style>
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f0f2f5;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #333;
 }
 
 header {
-  background: #0d6efd;
-  color: white;
-  padding: 20px;
   text-align: center;
+  padding: 60px 20px;
+  color: white;
+}
+
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 .container {
-  max-width: 800px;
-  margin: 30px auto;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
 .card {
-  background: white;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-textarea, input {
+h2 {
+  margin-top: 0;
+}
+
+input, textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
 }
 
 button {
   margin-top: 10px;
   padding: 10px 20px;
-  background: #0d6efd;
-  color: white;
+  border-radius: 8px;
   border: none;
+  background: #fff;
+  color: #333;
   cursor: pointer;
-  border-radius: 5px;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #0b5ed7;
+  background: #ddd;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: white;
 }
 </style>
 </head>
@@ -56,59 +79,69 @@ button:hover {
 <body>
 
 <header>
-  <h1>ProjuktiBari Tools</h1>
-  <p>Simple tools for digital marketers</p>
+  <h1>🚀 ProjuktiBari Tools</h1>
+  <p>All-in-one tools for digital creators</p>
 </header>
 
 <div class="container">
 
-  <!-- Caption -->
-  <div class="card">
-    <h2>Facebook Caption Generator</h2>
-    <textarea id="caption"></textarea>
-    <button onclick="generateCaption()">Generate Caption</button>
-  </div>
+<div class="card">
+  <h2>Caption Generator</h2>
+  <textarea id="caption"></textarea>
+  <button onclick="generateCaption()">Generate</button>
+  <button onclick="copyText('caption')">Copy</button>
+</div>
 
-  <!-- Hashtag -->
-  <div class="card">
-    <h2>Hashtag Generator</h2>
-    <input type="text" id="keyword" placeholder="Enter keyword">
-    <textarea id="hashtags"></textarea>
-    <button onclick="generateHashtags()">Generate Hashtags</button>
-  </div>
+<div class="card">
+  <h2>Hashtag Generator</h2>
+  <input type="text" id="keyword" placeholder="Enter keyword">
+  <textarea id="hashtags"></textarea>
+  <button onclick="generateHashtags()">Generate</button>
+  <button onclick="copyText('hashtags')">Copy</button>
+</div>
 
-  <!-- Product Description -->
-  <div class="card">
-    <h2>Product Description Generator</h2>
-    <input type="text" id="product" placeholder="Enter product name">
-    <textarea id="description"></textarea>
-    <button onclick="generateDescription()">Generate Description</button>
-  </div>
+<div class="card">
+  <h2>Product Description</h2>
+  <input type="text" id="product" placeholder="Enter product name">
+  <textarea id="description"></textarea>
+  <button onclick="generateDescription()">Generate</button>
+  <button onclick="copyText('description')">Copy</button>
+</div>
 
+</div>
+
+<div class="footer">
+  © 2026 ProjuktiBari | Built by Rahul Khan
 </div>
 
 <script>
 function generateCaption() {
   const captions = [
-    "Boost your business today 🚀",
-    "Limited time offer! Grab now 🔥",
-    "Grow faster with smart marketing 💼",
-    "Your success starts here 📈"
+    "Boost your business 🚀",
+    "Limited time offer 🔥",
+    "Grow smarter 📈"
   ];
   document.getElementById("caption").value =
-    captions[Math.floor(Math.random() * captions.length)];
+    captions[Math.floor(Math.random()*captions.length)];
 }
 
 function generateHashtags() {
   let keyword = document.getElementById("keyword").value;
-  let tags = `#${keyword} #marketing #business #growth #digital`;
-  document.getElementById("hashtags").value = tags;
+  document.getElementById("hashtags").value =
+    `#${keyword} #marketing #growth #business`;
 }
 
 function generateDescription() {
   let product = document.getElementById("product").value;
-  let desc = `${product} is a high-quality product designed to improve your daily life. Get the best value and performance today!`;
-  document.getElementById("description").value = desc;
+  document.getElementById("description").value =
+    `${product} is a high-quality product designed to improve your lifestyle.`;
+}
+
+function copyText(id) {
+  let text = document.getElementById(id);
+  text.select();
+  document.execCommand("copy");
+  alert("Copied!");
 }
 </script>
 
